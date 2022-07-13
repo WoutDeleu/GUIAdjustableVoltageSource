@@ -1,0 +1,156 @@
+﻿<Window x:Class="AdjustableVoltageSource.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdjustableVoltageSource"
+        mc:Ignorable="d"
+        Title="Adjustable Voltage Source" Height="auto" Width="auto" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight">
+    <StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="auto" Height="auto" Name="Measure" Click="OpenMeasureScreen"> Measure </Button>
+            <Separator Width="40" Background="Transparent"/>
+            <Button Width="auto" Height="auto" Name="Settings" Click="OpenSettingScreen"> Settings </Button>
+        </StackPanel>
+        <GroupBox Header="Put Voltage" Width="auto" HorizontalAlignment="Center" FontSize="20">
+            <GroupBox Header="Select Channel" Width="auto" HorizontalAlignment="left" FontSize="10">
+                <Grid Width="290">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0" RenderTransformOrigin="0,1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <CheckBox Grid.Row="0" Grid.Column="0">1</CheckBox>
+                        <CheckBox Grid.Row="1" Grid.Column="0">2</CheckBox>
+                        <CheckBox Grid.Row="2" Grid.Column="0">3</CheckBox>
+                        <CheckBox Grid.Row="3" Grid.Column="0">4</CheckBox>
+                        <CheckBox Grid.Row="4" Grid.Column="0">5</CheckBox>
+                        <CheckBox Grid.Row="5" Grid.Column="0">6</CheckBox>
+                        <CheckBox Grid.Row="6" Grid.Column="0">7</CheckBox>
+                        <CheckBox Grid.Row="7" Grid.Column="0">8</CheckBox>
+                        <CheckBox Grid.Row="0" Grid.Column="1">9</CheckBox>
+                        <CheckBox Grid.Row="1" Grid.Column="2">10</CheckBox>
+                        <CheckBox Grid.Row="2" Grid.Column="3">11</CheckBox>
+                        <CheckBox Grid.Row="3" Grid.Column="4">12</CheckBox>
+                        <CheckBox Grid.Row="4" Grid.Column="5">13</CheckBox>
+                        <CheckBox Grid.Row="5" Grid.Column="6">14</CheckBox>
+                        <CheckBox Grid.Row="6" Grid.Column="7">15</CheckBox>
+                        <CheckBox Grid.Row="7" Grid.Column="8">16</CheckBox>
+                    </Grid>
+                    <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label>Voltage:</Label>
+                            <TextBox Name="VoltageTextBox" PreviewTextInput="NumberValidationTextBox"  Background="Transparent" Width="30" Height="15"/>
+                            <Label>V</Label>
+                        </StackPanel>
+                        <Button Width="auto" Height="auto" Name="PutVoltageButton">Put Voltage</Button>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+        </GroupBox>
+        <GroupBox Header="Connect Channel To Ground" Width="auto" HorizontalAlignment="Center" FontSize="20">
+            <GroupBox Header="Select Channel" Width="auto" HorizontalAlignment="left" FontSize="10">
+                <Grid Width="290">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0" RenderTransformOrigin="0,1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <CheckBox Grid.Row="0" Grid.Column="0">1</CheckBox>
+                        <CheckBox Grid.Row="1" Grid.Column="0">2</CheckBox>
+                        <CheckBox Grid.Row="2" Grid.Column="0">3</CheckBox>
+                        <CheckBox Grid.Row="3" Grid.Column="0">4</CheckBox>
+                        <CheckBox Grid.Row="4" Grid.Column="0">5</CheckBox>
+                        <CheckBox Grid.Row="5" Grid.Column="0">6</CheckBox>
+                        <CheckBox Grid.Row="6" Grid.Column="0">7</CheckBox>
+                        <CheckBox Grid.Row="7" Grid.Column="0">8</CheckBox>
+                        <CheckBox Grid.Row="0" Grid.Column="1">9</CheckBox>
+                        <CheckBox Grid.Row="1" Grid.Column="2">10</CheckBox>
+                        <CheckBox Grid.Row="2" Grid.Column="3">11</CheckBox>
+                        <CheckBox Grid.Row="3" Grid.Column="4">12</CheckBox>
+                        <CheckBox Grid.Row="4" Grid.Column="5">13</CheckBox>
+                        <CheckBox Grid.Row="5" Grid.Column="6">14</CheckBox>
+                        <CheckBox Grid.Row="6" Grid.Column="7">15</CheckBox>
+                        <CheckBox Grid.Row="7" Grid.Column="8">16</CheckBox>
+                    </Grid>
+                    <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
+                        <Button Width="auto" Height="auto" Name="ConnectToGround">Connect To Ground</Button>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+        </GroupBox>
+        <GroupBox Header="Connect To Function Bus" Width="auto" HorizontalAlignment="Center" FontSize="20">
+            <GroupBox Header="Select Channel" Width="auto" HorizontalAlignment="left" FontSize="10">
+                <Grid Width="290">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0" RenderTransformOrigin="0,1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <CheckBox Grid.Row="0" Grid.Column="0">1</CheckBox>
+                        <CheckBox Grid.Row="1" Grid.Column="0">2</CheckBox>
+                        <CheckBox Grid.Row="2" Grid.Column="0">3</CheckBox>
+                        <CheckBox Grid.Row="3" Grid.Column="0">4</CheckBox>
+                        <CheckBox Grid.Row="4" Grid.Column="0">5</CheckBox>
+                        <CheckBox Grid.Row="5" Grid.Column="0">6</CheckBox>
+                        <CheckBox Grid.Row="6" Grid.Column="0">7</CheckBox>
+                        <CheckBox Grid.Row="7" Grid.Column="0">8</CheckBox>
+                        <CheckBox Grid.Row="0" Grid.Column="1">9</CheckBox>
+                        <CheckBox Grid.Row="1" Grid.Column="2">10</CheckBox>
+                        <CheckBox Grid.Row="2" Grid.Column="3">11</CheckBox>
+                        <CheckBox Grid.Row="3" Grid.Column="4">12</CheckBox>
+                        <CheckBox Grid.Row="4" Grid.Column="5">13</CheckBox>
+                        <CheckBox Grid.Row="5" Grid.Column="6">14</CheckBox>
+                        <CheckBox Grid.Row="6" Grid.Column="7">15</CheckBox>
+                        <CheckBox Grid.Row="7" Grid.Column="8">16</CheckBox>
+                    </Grid>
+                    <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
+                        <Button Width="auto" Height="auto" Name="ConnectChannelToBus">Connect Channels To Bus</Button>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+        </GroupBox>
+    </StackPanel>
+</Window>
