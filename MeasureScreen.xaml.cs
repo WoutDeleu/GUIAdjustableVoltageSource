@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,14 +15,47 @@ using System.Windows.Shapes;
 
 namespace AdjustableVoltageSource
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
-    public partial class MeasureScreen : Window
-    {
+
+    public partial class MeasureScreen : Window, INotifyPropertyChanged
+    {    
+        private double _measuredValue;
+        public double MeasuredValue
+        {
+            get { return _measuredValue; }
+            set
+            {
+                if (value != _measuredValue)
+                {
+                    _measuredValue = value;
+                    OnPropertyChanged("MeasuredValue");
+                }
+            }
+        }
         public MeasureScreen()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            Current_MeasuredValue.SetBinding(ContentProperty, new Binding("MeasuredValue"));
+            DataContext = this;
+            
         }
+        private void CloseMeasureScreen(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+        private void MeasureValue(object sender, RoutedEventArgs e)
+        {
+            MeasuredValue = 4;
+        }
+        #region INotifyPropertyChanged Implementation
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            var handler = System.Threading.Interlocked.CompareExchange(ref PropertyChanged, null, null);
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
+        #endregion
     }
 }

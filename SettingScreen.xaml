@@ -5,20 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdjustableVoltageSource"
         mc:Ignorable="d"
-        Title="Settings" Height="auto" Width="auto" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight">
+        Title="Settings" Height="auto" Width="auto" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Background="#FFADADAD">
     <StackPanel Orientation="Vertical">
-        <Label>Current BoardNumber: HIER MOET HUIDIG KOMEN</Label>
+        <StackPanel Orientation="Horizontal">
+            <Label>Current BoardNumber: </Label>
+            <Label Name="Current_BoardNumber" FontWeight="Bold" FontSize="14"/>
+        </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label>Change BoardNumber: </Label>
-            <TextBox Height="15" Width="40"></TextBox>
-            <Label Foreground="#FF696464" FontSize="10">(Format: 0x01)</Label>
+            <TextBox Height="15" Width="40" Name="NewBoardNumber"></TextBox>
+            <Label Foreground="#FF696464" FontSize="10">(Format: integer)</Label>
             <Separator Width="15" Background="Transparent"/>
-
         </StackPanel>
         <StackPanel HorizontalAlignment="Center"  Orientation="Horizontal">
-            <Button HorizontalAlignment="Center" Name="ApplyBoardNumber"> Apply Changes </Button>
+            <Button HorizontalAlignment="Center" Click="ApplyBoardNumber"> Apply Changes </Button>
             <Separator Width="15" Background="Transparent"/>
-            <Button HorizontalAlignment="Center" Name="CancelBoardNumber"> Cancel </Button>
+            <Button HorizontalAlignment="Center" Click="CancelBoardNumber"> Cancel </Button>
         </StackPanel>
         <Separator Height="15" Background="Transparent"/>
     </StackPanel>

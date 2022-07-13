@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdjustableVoltageSource"
         mc:Ignorable="d"
-        Title="Adjustable Voltage Source" Height="auto" Width="auto" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight">
+        Title="Adjustable Voltage Source" Height="auto" Width="auto" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Background="White">
     <StackPanel>
+        <Separator Height="15" Background="Transparent"/>
         <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="auto" Height="auto" Name="Measure" Click="OpenMeasureScreen"> Measure </Button>
+            <Button Width="auto" Height="auto" Name="Measure" Click="OpenMeasureScreen" FontSize="18"> Measure </Button>
             <Separator Width="40" Background="Transparent"/>
-            <Button Width="auto" Height="auto" Name="Settings" Click="OpenSettingScreen"> Settings </Button>
+            <Button Width="auto" Height="auto" Name="Settings" Click="OpenSettingScreen" FontSize="18"> Settings </Button>
         </StackPanel>
         <GroupBox Header="Put Voltage" Width="auto" HorizontalAlignment="Center" FontSize="20">
             <GroupBox Header="Select Channel" Width="auto" HorizontalAlignment="left" FontSize="10">
