@@ -11,9 +11,9 @@
             <Separator Height="15" Background="Transparent"/>
             <StackPanel Orientation="Horizontal">
                 <Separator Width="15" Background="Transparent"/>
-                <ComboBox>
-                    <ComboBoxItem IsSelected="True">Measure voltage</ComboBoxItem>
-                    <ComboBoxItem>Measure current</ComboBoxItem>
+                <ComboBox x:Name="SelectMeasureFunction">
+                    <ComboBoxItem Tag="MeasVoltage" IsSelected="True">Measure voltage</ComboBoxItem>
+                    <ComboBoxItem Tag="MeasCurrent">Measure current</ComboBoxItem>
                 </ComboBox>
                 <Separator Width="15" Background="Transparent"/>
             </StackPanel>

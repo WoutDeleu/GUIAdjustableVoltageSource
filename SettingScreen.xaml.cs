@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Text.RegularExpressions;
+
 
 namespace AdjustableVoltageSource
 {
@@ -44,18 +41,17 @@ namespace AdjustableVoltageSource
         }
         private void CancelBoardNumber(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
         private void ApplyBoardNumber(object sender, RoutedEventArgs e)
         {
             e.Handled = true;
             String boardNumberStr = NewBoardNumber.Text;
             Debug.WriteLine(boardNumberStr);
-            if (isHex(boardNumberStr))
+            if (isValidBoardNumber(boardNumberStr))
             {
                 BoardNumber = Convert.ToInt32(boardNumberStr);
 
-                // TODO
                 //setBoardNumberArduino(boardNumber);
             }
             else
@@ -78,10 +74,10 @@ namespace AdjustableVoltageSource
         #endregion
 
         // TODO
-        private void setBoardNumberArduino(int boardNumber)
+        /*private void setBoardNumberArduino(int boardNumber)
         {
             throw new NotImplementedException();
-        }
+        }*/
 
         // TODO
         private int getBoardNumberArduino()
@@ -89,14 +85,9 @@ namespace AdjustableVoltageSource
             return 154;
         }
 
-        private Boolean isHex(String s)
+        private Boolean isValidBoardNumber(String s)
         {
-            for(int i=0; i<s.Length; i++)
-            {
-                char ch = s[i];
-                if (ch < '0' || ch > '9')  return false;
-            }
-            return true;
+            return Regex.IsMatch(s, @"^\d+$");
         }
     }
 }
