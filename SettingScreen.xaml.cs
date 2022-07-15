@@ -1,15 +1,19 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
+using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Text.RegularExpressions;
-
+using System.Management;
 
 namespace AdjustableVoltageSource
 {
@@ -18,8 +22,9 @@ namespace AdjustableVoltageSource
     /// </summary>
     public partial class SettingScreen : Window, INotifyPropertyChanged
     {
+        public static SerialPort serialPort;
         private int _boardNumber;
-        public int BoardNumber 
+        public int BoardNumber
         {
             get { return _boardNumber; }
             set
@@ -35,9 +40,10 @@ namespace AdjustableVoltageSource
         {
             InitializeComponent();
             BoardNumber = getBoardNumberArduino();
-
             Current_BoardNumber.SetBinding(ContentProperty, new Binding("BoardNumber"));
             DataContext = this;
+            serialPort = new SerialPort("COM10", 115200);
+            serialPort.Open();
         }
         private void CancelBoardNumber(object sender, RoutedEventArgs e)
         {
@@ -52,7 +58,7 @@ namespace AdjustableVoltageSource
             {
                 BoardNumber = Convert.ToInt32(boardNumberStr);
 
-                //setBoardNumberArduino(boardNumber);
+                setBoardNumberArduino(BoardNumber);
             }
             else
             {
@@ -61,6 +67,29 @@ namespace AdjustableVoltageSource
                 // ... -> foutmelding
             }
         }
+        public void toggleLed()
+        {
+            Debug.WriteLine("ksetLed");
+            serialPort.WriteLine("kSetLed");
+        }
+        public void setBoardNumberArduino(int boardNumber)
+        {
+            toggleLed();
+        }
+
+        private int getBoardNumberArduino()
+        {
+            int boardNumber;
+            
+            boardNumber = 0;
+            return boardNumber;
+        }
+
+        private Boolean isValidBoardNumber(String s)
+        {
+            return Regex.IsMatch(s, @"^\d+$");
+        }
+
         #region INotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
@@ -71,23 +100,7 @@ namespace AdjustableVoltageSource
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
+
         #endregion
-
-        // TODO
-        /*private void setBoardNumberArduino(int boardNumber)
-        {
-            throw new NotImplementedException();
-        }*/
-
-        // TODO
-        private int getBoardNumberArduino()
-        {
-            return 154;
-        }
-
-        private Boolean isValidBoardNumber(String s)
-        {
-            return Regex.IsMatch(s, @"^\d+$");
-        }
     }
 }
