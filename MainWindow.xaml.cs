@@ -23,67 +23,45 @@ namespace AdjustableVoltageSource
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool updated { get; set; }
-        private bool ConnectedToGround_1 { get; set; }
-        private bool ConnectedToGround_2 { get; set; }
-        private bool ConnectedToGround_3 { get; set; }
-        private bool ConnectedToGround_4 { get; set; }
-        private bool ConnectedToGround_5 { get; set; }
-        private bool ConnectedToGround_6 { get; set; }
-        private bool ConnectedToGround_7 { get; set; }
-        private bool ConnectedToGround_8 { get; set; }
-        private bool ConnectedToGround_9 { get; set; }
-        private bool ConnectedToGround_10 { get; set; }
-        private bool ConnectedToGround_11 { get; set; }
-        private bool ConnectedToGround_12 { get; set; }
-        private bool ConnectedToGround_13 { get; set; }
-        private bool ConnectedToGround_14 { get; set; }
-        private bool ConnectedToGround_15 { get; set; }
-        private bool ConnectedToGround_16 { get; set; }
+        public bool ConnectedToGround_1 { get; set; }
+        public bool ConnectedToGround_2 { get; set; }
+        public bool ConnectedToGround_3 { get; set; }
+        public bool ConnectedToGround_4 { get; set; }
+        public bool ConnectedToGround_5 { get; set; }
+        public bool ConnectedToGround_6 { get; set; }
+        public bool ConnectedToGround_7 { get; set; }
+        public bool ConnectedToGround_8 { get; set; }
+        public bool ConnectedToGround_9 { get; set; }
+        public bool ConnectedToGround_10 { get; set; }
+        public bool ConnectedToGround_11 { get; set; }
+        public bool ConnectedToGround_12 { get; set; }
+        public bool ConnectedToGround_13 { get; set; }
+        public bool ConnectedToGround_14 { get; set; }
+        public bool ConnectedToGround_15 { get; set; }
+        public bool ConnectedToGround_16 { get; set; }
 
-        private bool ConnectedToBus_1 { get; set; }
-        private bool ConnectedToBus_2 { get; set; }
-        private bool ConnectedToBus_3 { get; set; }
-        private bool ConnectedToBus_4 { get; set; }
-        private bool ConnectedToBus_5 { get; set; }
-        private bool ConnectedToBus_6 { get; set; }
-        private bool ConnectedToBus_7 { get; set; }
-        private bool ConnectedToBus_8 { get; set; }
-        private bool ConnectedToBus_9 { get; set; }
-        private bool ConnectedToBus_10 { get; set; }
-        private bool ConnectedToBus_11 { get; set; }
-        private bool ConnectedToBus_12 { get; set; }
-        private bool ConnectedToBus_13 { get; set; }
-        private bool ConnectedToBus_14 { get; set; }
-        private bool ConnectedToBus_15 { get; set; }
-        private bool ConnectedToBus_16 { get; set; }
-        public MainWindow()
-        {
-            InitializeComponent();
-            DataContext = this;
-        }
-        private void OpenSettingScreen(object sender, RoutedEventArgs e)
-        {
-            SettingScreen settings = new SettingScreen();
-            settings.ShowDialog();
-        }
-        private void OpenMeasureScreen(object sender, RoutedEventArgs e)
-        {
-            MeasureScreen measureScreen = new MeasureScreen();
-            measureScreen.ShowDialog();
-        }
-        private void PutVoltage(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine(ConnectedToBus_10);
-            Debug.WriteLine(ConnectedToBus_16);
-            Debug.WriteLine(ConnectedToGround_6);
-        }
+        public bool ConnectedToBus_1 { get; set; }
+        public bool ConnectedToBus_2 { get; set; }
+        public bool ConnectedToBus_3 { get; set; }
+        public bool ConnectedToBus_4 { get; set; }
+        public bool ConnectedToBus_5 { get; set; }
+        public bool ConnectedToBus_6 { get; set; }
+        public bool ConnectedToBus_7 { get; set; }
+        public bool ConnectedToBus_8 { get; set; }
+        public bool ConnectedToBus_9 { get; set; }
+        public bool ConnectedToBus_10 { get; set; }
+        public bool ConnectedToBus_11 { get; set; }
+        public bool ConnectedToBus_12 { get; set; }
+        public bool ConnectedToBus_13 { get; set; }
+        public bool ConnectedToBus_14 { get; set; }
+        public bool ConnectedToBus_15 { get; set; }
+        public bool ConnectedToBus_16 { get; set; }
 
 
         private void ConnectBus1(object sender, RoutedEventArgs e)
         {
             ConnectedToBus_1 = !ConnectedToBus_1;
-            if(updated) updated = false;
+            if (updated) updated = false;
         }
         private void ConnectBus2(object sender, RoutedEventArgs e)
         {
@@ -243,6 +221,34 @@ namespace AdjustableVoltageSource
             if (updated) updated = false;
         }
 
+
+        private bool updated { get; set; }
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            DataContext = this;
+            // ToDo
+            // Arduino Setup methode?
+        }
+        private void OpenSettingScreen(object sender, RoutedEventArgs e)
+        {
+            SettingScreen settings = new SettingScreen();
+            settings.ShowDialog();
+        }
+        private void OpenMeasureScreen(object sender, RoutedEventArgs e)
+        {
+            MeasureScreen measureScreen = new MeasureScreen();
+            measureScreen.ShowDialog();
+        }
+        private void PutVoltage(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine(ConnectedToBus_1);
+            Debug.WriteLine(ConnectedToBus_10);
+            Debug.WriteLine(ConnectedToBus_16);
+            Debug.WriteLine(ConnectedToGround_6);
+            Debug.WriteLine(ConnectedToBus_8);
+        }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
